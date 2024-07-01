@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import APIDataLoad from "./component/APIDataLoad"
 
 import {loader as dataLoader} from './component/APIDataLoad'
+import AddData from "./component/AddData"
 
 const App = () => {
   const router = createBrowserRouter([
@@ -9,6 +10,14 @@ const App = () => {
       path : "/",
       element : <APIDataLoad />,
       loader : dataLoader
+    },
+    {
+      path:"/addUser",
+      element : <AddData />
+    },
+    {
+      path:"/editUser",
+      element : <EditData />
     }
   ])
   return <RouterProvider router={router} />
