@@ -3,6 +3,7 @@ import APIDataLoad from "./component/APIDataLoad"
 
 import {loader as dataLoader} from './component/APIDataLoad'
 import AddData from "./component/AddData"
+import EditData from "./component/EditData"
 
 const App = () => {
   const router = createBrowserRouter([
