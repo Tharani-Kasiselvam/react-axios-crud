@@ -31,6 +31,14 @@
   border: 1px solid black;
   box-shadow: 0px 3px 5px 0px;
   border-radius: 5px;
+  background-image: linear-gradient(#de92922d,#929bde0f);
+}
+.edit_form{
+  max-width: 400px;
+  margin : 100px;
+  border: 1px solid black;
+  box-shadow: 0px 3px 5px 0px;
+  border-radius: 5px;
   background-image: linear-gradient(#90ebee,#de92922d);
 }
 .form{

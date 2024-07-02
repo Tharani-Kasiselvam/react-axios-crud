@@ -1,37 +1,30 @@
 import axios from "axios"
-import { useLoaderData, useNavigate } from "react-router-dom"
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom"
 import '../App.css'
 import { LuClipboardEdit } from "react-icons/lu";
 import { RiDeleteBin2Line } from "react-icons/ri";
-
-
-export async function loader(){
-
-    //Below API entry point is not allowing to add data
-    // const apiData = await axios.get("https://jsonplaceholder.typicode.com/users")
-
-    //Provided my own mockapi data and designed the Project
-    const apiData = await axios.get("https://666161f063e6a0189fe98846.mockapi.io/userData")
-    return {apiData : apiData.data}
-}
+import { createContext, useContext } from "react";
+import { DataContext } from "./Provider"
 
 
 const APIDataLoad = () => {
-    const {apiData} = useLoaderData()
-    console.log(apiData)
-    const navigate = useNavigate()
+    const {apiData} = useContext(DataContext);
 
-    const addClickHandler = () => {
+    const navigate = useNavigate();
+
+    console.log("Inside APIDATALOAD compnt",apiData)
+
+       const addClickHandler = () => {
         navigate("/addUser")
-    }
+         }
 
-    const editUserHandler = () => {
-        navigate("/editUser")
-    }
+        const editUserHandler = () => {
+            navigate("/editUser")
+        }
 
   return (
     <div className="main">
-               <h1 style={{textAlign:"center"}}>API Data</h1> 
+          <h1 style={{textAlign:"center"}}>API Data</h1> 
                <button className="btn btn-primary" 
                     style={{marginLeft:"10px"}}
                     onClick={addClickHandler}>Create New User</button>
@@ -66,8 +59,8 @@ const APIDataLoad = () => {
                         </form>
                     )
                 })}
-
         </div>
+        <Outlet />
     </div>
   )
 }
