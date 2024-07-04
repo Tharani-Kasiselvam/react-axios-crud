@@ -20,9 +20,7 @@ const Provider = ({children}) => {
     const [apiData,setApiData] = useState()
     
     useEffect(()=>{
-        console.log("inside useeffect")
         loader().then((res)=>{
-            console.log(res)
             setApiData(res.fetchApiData)
         })
     },[])

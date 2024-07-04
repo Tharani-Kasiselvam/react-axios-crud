@@ -16,7 +16,6 @@ const EditData = () => {
 
   const updateUser = (e) => {
     e.preventDefault()
-    console.log(e.target[0].value)
     const editName = e.target[0].value
     const editUname = e.target[1].value
     const editEmail = e.target[2].value

@@ -6,9 +6,7 @@ const Home = () => {
     const {reload,setReload} = useContext(DataContext)
 
 const LoadContents = () => {
-    // console.log("reload value:",reload);
     if(!reload){
-        console.log("Inside reload verification");
         return(
         <h1>
             <Link to='/dataload'>Click here</Link> to load API Data and to perform CRUD Operations
