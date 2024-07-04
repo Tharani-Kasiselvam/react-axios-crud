@@ -1,8 +1,8 @@
 # AXIOS and CRUD Operations
 
-***Introduction:***
+***Introduction:***   
 -A Home Page is designed to load the data fetched via **Axios**.   
-- The data are loaded into a Cards with an Edit and Delete button.   
+- Each data are loaded into a Cards with an Edit and Delete button.   
 - A Create User Button is available to add New Users.   
 - A Home button is available to route back to Home page.   
 - While loading the Home page, there is Provider component with **loader()** function to fetch the data from mockAPI entrypoint and keep it ready before loading other components.   
