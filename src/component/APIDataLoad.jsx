@@ -1,37 +1,51 @@
-import axios from "axios"
-import { Outlet, useLoaderData, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import '../App.css'
 import { LuClipboardEdit } from "react-icons/lu";
 import { RiDeleteBin2Line } from "react-icons/ri";
-import { createContext, useContext } from "react";
+import { useContext } from "react";
 import { DataContext } from "./Provider"
+import { ToastContainer } from "react-toastify"
 
 
 const APIDataLoad = () => {
-    const {apiData} = useContext(DataContext);
+    const {apiData,setUserId,deleteUserData} = useContext(DataContext);
 
     const navigate = useNavigate();
-
-    console.log("Inside APIDATALOAD compnt",apiData)
 
        const addClickHandler = () => {
         navigate("/addUser")
          }
 
-        const editUserHandler = () => {
+        const editUserHandler = (userId) => {
+            if(userId!=0){
+            setUserId(userId)
             navigate("/editUser")
+             }
+        }
+
+        const deleteUserHandler = (userId) => {
+            deleteUserData(userId)
+            setTimeout(() => {
+                navigate("/")
+              }, 3000);
         }
 
   return (
     <div className="main">
           <h1 style={{textAlign:"center"}}>API Data</h1> 
+                <span id="btn-align"><button className="btn btn-primary" 
+                    style={{marginLeft:"10px"}}
+                    onClick={()=>{
+                        navigate("/")
+                        }} >Home</button>
+                <div className="card-deck"></div>
                <button className="btn btn-primary" 
                     style={{marginLeft:"10px"}}
-                    onClick={addClickHandler}>Create New User</button>
+                    onClick={addClickHandler}>Create New User</button></span>
                 <div className="card-deck">
                 {apiData.map(data=>{
                     return (
-                        <form key={data.id} >
+                        <form key={data.id}>
                         <div className="card">
                             <div className="card-body">
                             <p className="card-text"><b>Name: </b> 
@@ -50,8 +64,8 @@ const APIDataLoad = () => {
                             <input type="text" id="data-val-email" value={data.website} disabled></input> <br />
                             </p>
                             <div className="oprtns">
-                                <LuClipboardEdit size={25} color="blue" onClick={editUserHandler}/> &emsp; &emsp; &emsp;
-                                <RiDeleteBin2Line size={25} color="red"/>
+                                <LuClipboardEdit size={25} color="blue" onClick={()=>editUserHandler(data.id)}/> &emsp; &emsp; &emsp;
+                                <RiDeleteBin2Line size={25} color="red" onClick={()=>deleteUserHandler(data.id)}/>
                             </div>
                             </div>
 
@@ -60,7 +74,7 @@ const APIDataLoad = () => {
                     )
                 })}
         </div>
-        <Outlet />
+        <ToastContainer />
     </div>
   )
 }
